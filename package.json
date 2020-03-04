@@ -1,0 +1,28 @@
+{
+  "name": "ticktocktoes",
+  "version": "0.1.0",
+  "description": "Tic Tac Toe RL",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnpaulada/ticktocktoes.git"
+  },
+  "keywords": [
+    "rl",
+    "tictactoe",
+    "game",
+    "ai"
+  ],
+  "author": "John Paul Ada",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/johnpaulada/ticktocktoes/issues"
+  },
+  "homepage": "https://github.com/johnpaulada/ticktocktoes#readme",
+  "devDependencies": {
+    "jest": "^25.1.0"
+  }
+}
