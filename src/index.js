@@ -5,12 +5,14 @@ const theirMove = require('./theirMove')
 const { updateQ } = require('./rl') 
 const {concatListToStr} = require('./utils')
 
-let Q = new Map()
+let Q = {}
 
-const iters = 100
+const iters = 1000
 let wins = 0
 
 for (let i = 0; i < iters; i++) {
+    console.log(i)
+
     let board = [0, 0, 0, 0, 0, 0, 0, 0, 0]
     let previousBoard = null
     let done = false
@@ -34,4 +36,4 @@ for (let i = 0; i < iters; i++) {
 }
 
 console.log(`${wins} wins over ${iters}`)
-// console.log(Q)
+console.log(Object.keys(Q))

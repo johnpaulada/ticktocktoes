@@ -6,8 +6,8 @@ function yourMove(previousBoard, Q) {
     const moves = moveList(board, true)
     let move = null
 
-    if (!Q.has(board)) {
-        Q = Q.set(concatListToStr(board), moves.reduce((m, x) => m.set(concatListToStr(x), 0), new Map()))
+    if (!(board in Q)) {
+        Q = {...Q, [concatListToStr(board)]: moves.reduce((m, x) => ({...m, [concatListToStr(x)]: 0}, {}))}
         move = randomItemFrom(moves)
         board[move[0]] = move[1]
     } else {

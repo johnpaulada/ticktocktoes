@@ -1,21 +1,18 @@
 const calculateQ = require('./calculateQ')
 const getStateMax = require('./getStateMax')
 
-function getStateValue(Q, board) {
-    const values = Q.get(board).values()
-    return Array.from(values).reduce((a, b) => a + b)
-}
-
 function updateQ(Q, previousBoard, board, move, reward) {
-    if (!Q.has(board)) {
-        Q.set(board, new Map())
+    if (!(board in Q)) {
+        Q = {...Q, [board]: {}}
     }
 
-    const previousBoardValue = Q.get(previousBoard)
-    const q = previousBoardValue.has(move) ? previousBoardValue.get(move) : 0
+    const previousBoardValue = Q[previousBoard]
+    const q = move in previousBoardValue ? previousBoardValue[move] : 0
     const max = getStateMax(Q, board)
 
-    Q.get(previousBoard).set(move, calculateQ(q, max, reward))
+    const calculated = calculateQ(q, max, reward)
+
+    Q = {...Q, [previousBoard]: {...previousBoardValue, [move]: calculated}}
 
     return Q
 }
